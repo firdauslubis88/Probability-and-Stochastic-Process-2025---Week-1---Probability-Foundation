@@ -21,6 +21,7 @@
             \item \textbf{Law of Total Probability:} A fundamental principle for understanding the probability of multiple events.
             \item \textbf{Bayes' Theorem:} A fundamental principle for understanding the probability of multiple events.
             \item \textbf{Probability of Independent Events:} A fundamental principle for understanding the probability of multiple events.
+            \item \textbf{Conditional Independence:} When a product may be used once the group has been fixed, and when it misleads.
         \end{itemize}
     \end{block}
 \end{frame}
@@ -385,7 +386,7 @@
 \begin{frame}[t]
 \frametitle{\ }
 \vspace{-7.5mm}
-\begin{Definition}[Probability and Related Terms (\only<1>{1}\only<2>{2}/2)]
+\begin{Definisi}[Probability and Related Terms (\only<1>{1}\only<2>{2}/2)]
     \begin{itemize}
     \only<1>{
         \item \textbf{Outcome:} Any possible result of an observation process obtained from an experiment. Example: a specific keyword is not present in a comment; a comment is \textit{spam} / \textit{ham}.
@@ -398,7 +399,7 @@
         \item \textbf{Probability:} A measure that describes the likelihood of an outcome or event occurring as a result of a repeated experiment.
         }
     \end{itemize}
-\end{Definition}
+\end{Definisi}
 \end{frame}
 
 \subsubsection{Axioms of Probability}
@@ -1670,6 +1671,178 @@ Since we already know the card is Red (event B has occurred), our sample space i
     \end{columns}
 \end{frame}
 
+\subsubsection{Conditional Independence}
+\begin{frame} \vfill \centering \begin{beamercolorbox}[sep=10pt,center,shadow=false,rounded=true]{section_begin} \usebeamerfont{section_begin}\insertsubsubsectionhead\par \end{beamercolorbox} \vfill \end{frame}
+
+\begin{frame}[t]
+\frametitle{Independence That Holds Inside One Group}
+\vspace{1mm}
+\footnotesize
+\begin{Definisi}[Conditional Independence]
+    Two events $A$ and $B$ are \textbf{conditionally independent given} $H$ if
+    \[ P[A \cap B \mid H] = P[A \mid H]\, P[B \mid H], \]
+    or equivalently, if $P[B \mid A, H] = P[B \mid H]$ whenever $P[A \mid H] > 0$.
+\end{Definisi}
+\vspace{-2mm}
+\begin{itemize}\setlength\itemsep{2pt}
+    \item Read it as: \emph{inside the group $H$}, learning that $A$ occurred does not change the probability of $B$.
+    \item A comma inside the bar means ``and'': $P[B \mid A, H]$ is the probability of $B$ among the outcomes that satisfy $A$ \emph{and} $H$ at the same time.
+    \item The condition must hold in \textbf{every} group. Independence given $H$ alone is not enough; $H^c$ has to be checked as well.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Two Kinds of Independence That Are Easily Confused}
+\vspace{1mm}
+\footnotesize
+\begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+        \begin{block}{Independence (unconditional)}
+            \[ P[A \cap B] = P[A]P[B] \]
+            Holds across the whole population, without separating any group.
+        \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+        \begin{block}{Conditional independence}
+            \[ P[A \cap B \mid H] = P[A \mid H]P[B \mid H] \]
+            Holds inside the group $H$, once the group has been fixed first.
+        \end{block}
+    \end{column}
+\end{columns}
+\vspace{2mm}
+\begin{alertblock}{Neither one implies the other}
+    Two events can be independent inside every group and still look dependent once the groups are pooled --- and the other way round. That is why the two must be named separately, and never abbreviated to just ``independent''.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Why the Assumption Is Tempting, and When It Fails}
+\vspace{1mm}
+\footnotesize
+\begin{block}{The temptation}
+    If $A$ and $B$ are taken to be conditionally independent given $H$, the probability that both occur is just a product:
+    \[ P[A \cap B \mid H] = P[A \mid H]\,P[B \mid H]. \]
+    One multiplication, with nothing new to measure. That is why the assumption is used everywhere, often without ever being stated.
+\end{block}
+\vspace{-1mm}
+\begin{block}{When it fails}
+    When a \textbf{common cause} drives $A$ and $B$ together. Once $A$ is known to have occurred, that cause becomes more likely to be present, so $B$ becomes more likely too --- \emph{even with the group already fixed}. In symbols: $P[B \mid A, H] \neq P[B \mid H]$.
+\end{block}
+\vspace{-1mm}
+\begin{itemize}
+    \item The way to check is not intuition but data: measure $P[B \mid H]$ and $P[B \mid A, H]$, then compare. Equal, and the assumption may be used; different, and it may not.
+    \item The same check must be repeated on $H^c$. That is often where the gap is widest.
+\end{itemize}
+\end{frame}
+
+\subsection{Guided Case-Study Quiz Example}
+\begin{frame} \vfill \centering \begin{beamercolorbox}[sep=10pt,center,shadow=false,rounded=true]{section_begin} \usebeamerfont{section_begin}\insertsubsectionhead\par \end{beamercolorbox} \vfill \end{frame}
+
+\begin{frame}[t]
+\frametitle{What It Looks Like}
+\vspace{1mm}\footnotesize
+From Week 2 onwards, every synchronous session closes with a Guided Case-Study Quiz. The example below uses Week 1 material so that its shape is visible before the real one arrives.
+\begin{block}{What makes a quiz ``guided''}
+\begin{itemize}\setlength\itemsep{1pt}
+    \item The case is presented by the lecturer in that same session, so there is nothing to memorise beforehand.
+    \item The working is \emph{scaffolded}: the table is already drawn, and you only fill in the cells.
+    \item Every answer is a number or a tick box --- nothing depends on how you word a sentence.
+    \item Graded automatically on EMAS3. Each quiz is worth 4\%, eight times across the semester.
+\end{itemize}
+\end{block}
+\begin{alertblock}{What is being trained here}
+Not speed, but the habit of counting before concluding. The weight per quiz is deliberately small so that you are allowed to be slow and unsure without paying much for it.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{The Case and Its Archive Figures}
+\vspace{1mm}\footnotesize
+A system reviews one complete interview session and then raises two flags: a \emph{language flag} and a \emph{voice flag}. What the officer actually wants to know --- whether the applicant's account is problematic --- cannot be observed directly.
+\vspace{1mm}
+\begin{center}\scriptsize
+\begin{tabular}{|c|l|c|l|}
+\hline
+$H$ & account is problematic & $H^c$ & account is not problematic \\ \hline
+$A$ & language flag up & $A^c$ & language flag not up \\ \hline
+$B$ & voice flag up & $B^c$ & voice flag not up \\ \hline
+\end{tabular}
+\vspace{2mm}
+
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Quantity} & \textbf{Symbol} & \textbf{Value} \\ \hline
+Sessions whose account is problematic & $P(H)$ & $0.04$ \\ \hline
+Language flag up, among problematic sessions & $P(A \mid H)$ & $0.50$ \\ \hline
+Language flag up, among unproblematic sessions & $P(A \mid H^c)$ & $0.10$ \\ \hline
+\end{tabular}
+\end{center}
+\vspace{1mm}
+Imagine $10{,}000$ sessions.
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{The Question --- Exactly as You Will Receive It}
+\vspace{1mm}\footnotesize
+A new officer says: \emph{``The language flag is up in half of all problematic sessions, so if the flag is up, the chance this session is problematic is about 50\%.''} Check that.
+\vspace{2mm}
+
+\textbf{(a)} Complete the table: two empty cells under \textbf{Number of sessions}, then three under \textbf{Flagged sessions}.
+\begin{center}\scriptsize
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Group} & \textbf{Number of sessions} & \textbf{Probability flag is up} & \textbf{Flagged sessions} \\ \hline
+Problematic & \underline{\hspace{1.4cm}} & $0.50$ & \underline{\hspace{1.4cm}} \\ \hline
+Unproblematic & \underline{\hspace{1.4cm}} & $0.10$ & \underline{\hspace{1.4cm}} \\ \hline
+\textbf{Total} & $10{,}000$ & \textemdash & \underline{\hspace{1.4cm}} \\ \hline
+\end{tabular}
+\end{center}
+\vspace{1mm}
+\textbf{(b)} From that table, what fraction of the flagged sessions is problematic? State it as a percentage to two decimal places.
+\vspace{1mm}
+
+\textbf{(c)} Tick the name of the theorem that assembles the ``Total'' row: \quad $\square$~Bayes' theorem \quad $\square$~law of total probability \quad $\square$~probability axioms
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Worked Solution}
+\vspace{1mm}\footnotesize
+\textbf{(a)} From $P(H) = 0.04$: problematic $10{,}000 \times 0.04 = 400$, unproblematic $9{,}600$.
+\begin{center}\scriptsize
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Group} & \textbf{Number of sessions} & \textbf{Probability flag is up} & \textbf{Flagged sessions} \\ \hline
+Problematic & $\mathbf{400}$ & $0.50$ & $\mathbf{200}$ \\ \hline
+Unproblematic & $\mathbf{9{,}600}$ & $0.10$ & $\mathbf{960}$ \\ \hline
+\textbf{Total} & $10{,}000$ & \textemdash & $\mathbf{1{,}160}$ \\ \hline
+\end{tabular}
+\end{center}
+\vspace{1mm}
+\textbf{(b)} $P(H \mid A) = 200/1{,}160 = \mathbf{17.24\%}$. The officer is wrong, and off by almost a factor of three.
+\vspace{1mm}
+
+\textbf{(c)} \textbf{Law of total probability} --- the ``Total'' row is assembled by sweeping across both groups, $200 + 960$. Bayes' theorem only does its work in step (b), when the numerator is divided by that total.
+\vspace{1mm}
+\begin{alertblock}{Why the gap is that wide}
+Not because the flag is bad. Unproblematic sessions are far more numerous, so $9{,}600 \times 0.10 = 960$ false alarms drown out the $200$ correct detections. Even a detector that caught \emph{every} problematic session would still face those $960$.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{The Rest of It, and Where the Full File Lives}
+\vspace{1mm}\footnotesize
+The complete example has four questions. The one just worked through is question 1; the other three continue with the same case:
+\begin{itemize}\setlength\itemsep{2pt}
+    \item \textbf{Question 2} --- the voice flag is brought in as well. Two ways of computing give different answers ($29.41\%$ and $20.00\%$); an archive note decides which one applies. What is being tested: the conditional independence assumption.
+    \item \textbf{Question 3} --- a four-state table produced by manual review. What is being tested: partitioning the sample space, and which flag actually carries information.
+    \item \textbf{Question 4} --- matching each step already carried out with the name of the theory behind it.
+\end{itemize}
+\vspace{1mm}
+\begin{block}{Files}
+The full version, with all solutions and the mark breakdown, is on EMAS3: \textbf{Guided-Case-Study-Quiz-Week1}. Two companion files sit alongside it --- a sample Case-Study Quiz (unguided) and a Midterm specimen --- so that the difference between the three kinds of question can be seen side by side.
+\end{block}
+\end{frame}
+
 \subsection{Q\&A}
 \begin{frame}
 \frametitle{Q\&A}
@@ -1764,7 +1937,7 @@ Since we already know the card is Red (event B has occurred), our sample space i
 \begin{frame}[t]
 \frametitle{Upcoming Lecture}
 \begin{alertblock}{Bridge to the Next Topic}
-    With the foundational theory and calculation tools in hand, we are ready to move to the next stage: modeling the sequence of tokens in a comment as a \textbf{sequential experiment} and numerical features using random variables.
+    Throughout this week every probability was computed over a single event that had already happened. Next week the question shifts: if an experiment is run repeatedly or in stages, how many ways can its outcomes be arranged, and what is the probability of each arrangement? That is where \textbf{sequential experiments} and their counting rules --- permutations, combinations, and the multinomial coefficient --- come in as the tools for computing it.
 \end{alertblock}
 \end{frame}
 
