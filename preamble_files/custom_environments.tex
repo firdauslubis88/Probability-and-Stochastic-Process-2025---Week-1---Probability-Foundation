@@ -12,7 +12,7 @@
 \newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
 \makeatother
 %\setbeamertemplate{caption}[numbered] %Numbering caption
-\renewcommand{\figurename}{Gambar} %Change "Figure" in caption to "Gambar"
+\renewcommand{\figurename}{Figure} %English deck: keep the English caption name
 
 \setbeamertemplate{bibliography item}{\insertbiblabel}
 \renewcommand*{\bibfont}{\scriptsize}
@@ -24,7 +24,7 @@
 %----------------Styling----------------
 \makeatletter
 % --- Tabel ---%
-\addto\captionsindonesian{ \renewcommand{\tablename}{Tabel} }
+\addto\captionsenglish{ \renewcommand{\tablename}{Table} }
 \newenvironment{Tabel}[1]{
   \begin{table}[!htbp]
   \centering
@@ -32,7 +32,7 @@
   \hypertarget{target.tab.\theautotable}{}
   \caption{#1}\label{tab.auto.\theautotable}
   % Menambahkan entri ke .lot dengan perintah hyperlink eksplisit
-  \addcontentsline{lot}{table}{\protect\numberline{Tabel \thetable: \protect\hyperlink{target.tab.\thetable}{#1}}}
+  \addcontentsline{lot}{table}{\protect\numberline{Table \thetable: \protect\hyperlink{target.tab.\thetable}{#1}}}
   \begin{tabular}{ll}
   \toprule
 }{
@@ -56,13 +56,13 @@
       \ifstrempty{#2}{}{\label{#2}
       }
     } 
-    \begin{tcolorbox}[enhanced, colback=teal!10, colframe=teal!80!black, fonttitle=\bfseries, coltitle=white, colbacktitle=teal!70!black, left=3mm, right=3mm, top=2mm, bottom=2mm, title={Teorema \thenomorTeorema\ifstrempty{#1}{}{:\ #1}}] \setbeamertemplate{enumerate items}[default] \setlength{\leftmargini}{6mm}
+    \begin{tcolorbox}[enhanced, colback=teal!10, colframe=teal!80!black, fonttitle=\bfseries, coltitle=white, colbacktitle=teal!70!black, left=3mm, right=3mm, top=2mm, bottom=2mm, title={Theorem \thenomorTeorema\ifstrempty{#1}{}{:\ #1}}] \setbeamertemplate{enumerate items}[default] \setlength{\leftmargini}{6mm}
 }{  \end{tcolorbox}}
 
-\newenvironment{Aksioma}[1][]{ \only<1>{\stepcounter{nomorAksioma}} \begin{tcolorbox}[ enhanced, colback=purple!10, colframe=purple!80!black, fonttitle=\bfseries, coltitle=white, colbacktitle=purple!70!black, left=3mm, right=3mm, top=2mm, bottom=2mm, title={Aksioma \thenomorAksioma\ifstrempty{#1}{}{:\ #1}} ] \setbeamertemplate{enumerate items}[default]    \setlength{\leftmargini}{6mm} 
+\newenvironment{Aksioma}[1][]{ \only<1>{\stepcounter{nomorAksioma}} \begin{tcolorbox}[ enhanced, colback=purple!10, colframe=purple!80!black, fonttitle=\bfseries, coltitle=white, colbacktitle=purple!70!black, left=3mm, right=3mm, top=2mm, bottom=2mm, title={Axiom \thenomorAksioma\ifstrempty{#1}{}{:\ #1}} ] \setbeamertemplate{enumerate items}[default]    \setlength{\leftmargini}{6mm} 
 }{ \end{tcolorbox} }
 
-\newenvironment{Definisi}[1][]{ \only<1>{\stepcounter{nomorDefinisi}} \begin{tcolorbox}[ enhanced, colback=orange!10, colframe=orange!80!black, fonttitle=\bfseries, coltitle=white, colbacktitle=orange!70!black, left=3mm, right=3mm, top=2mm, bottom=2mm, title={Definisi \thenomorDefinisi\ifstrempty{#1}{}{:\ #1}} ] \setbeamertemplate{enumerate items}[default]    \setlength{\leftmargini}{6mm} 
+\newenvironment{Definisi}[1][]{ \only<1>{\stepcounter{nomorDefinisi}} \begin{tcolorbox}[ enhanced, colback=orange!10, colframe=orange!80!black, fonttitle=\bfseries, coltitle=white, colbacktitle=orange!70!black, left=3mm, right=3mm, top=2mm, bottom=2mm, title={Definition \thenomorDefinisi\ifstrempty{#1}{}{:\ #1}} ] \setbeamertemplate{enumerate items}[default]    \setlength{\leftmargini}{6mm} 
 }{ \end{tcolorbox} }
 
 \usetikzlibrary{trees, shapes.geometric, shapes.symbols, shapes.misc, arrows.meta, positioning, matrix, backgrounds, calc}

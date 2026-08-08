@@ -239,7 +239,11 @@ Each exam formally covers three weeks, exactly like the Case-Study Quizzes --- i
 \begin{frame}
 	\frametitle{References with \textit{Numbered Citation} Format}
  \tiny
-\printbibliography
+% No \cite appears in the body, so every references.bib entry is listed
+% as the course reading list. heading=none: biblatex's own section heading
+% cannot live inside a beamer frame.
+\nocite{*}
+\printbibliography[heading=none]
 \end{frame}
 
 %----------------------------------------------------------------------------------------
