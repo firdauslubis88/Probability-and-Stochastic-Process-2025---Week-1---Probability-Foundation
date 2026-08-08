@@ -1,0 +1,75 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+
+% --- PREAMBLE ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+
+% Paket untuk Teorema
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{ifthen}
+\usepackage{xparse} % WAJIB untuk argumen opsional ganda
+
+% Paket untuk referensi cerdas
+\usepackage{cleveref}
+
+% --- DEFINISI COUNTER, CLEVEREF, DAN ENVIRONMENT ---
+\newcounter{nomorTeorema}
+\renewcommand{\thenomorTeorema}{\arabic{nomorTeorema}}
+\crefname{nomorTeorema}{Teorema}{Teorema-teorema} % Pengaturan untuk \cref
+
+% Definisi Environment Final (Antipeluru)
+% Argumen #1: Judul Tambahan (Opsional)
+% Argumen #2: Nama Label (Opsional)
+\NewDocumentEnvironment{Teorema}{ O{} O{} }
+  { % \begin
+    \only<1>{
+      \stepcounter{nomorTeorema}
+      \ifstrempty{#2}{}{
+        \label{#2}
+      }
+    }
+    \begin{tcolorbox}[
+      enhanced, colback=teal!10, colframe=teal!80!black,
+      fonttitle=\bfseries, coltitle=white, colbacktitle=teal!70!black,
+      title={Teorema \thenomorTeorema\ifstrempty{#1}{}{:\ #1}}
+    ]
+    \setbeamertemplate{enumerate items}[default]
+    \setlength{\leftmargini}{6mm}
+  }
+  { % \end
+    \end{tcolorbox}
+  }
+% -------------------------------------------
+
+\begin{document}
+
+\begin{frame}{Uji Coba Penomoran dan Referensi Final}
+
+  % Teorema dengan judul dan label
+  \begin{Teorema}[Pythagoras][thm:pythagoras]
+    Untuk segitiga siku-siku, $a^2 + b^2 = c^2$.
+  \end{Teorema}
+
+  \pause % Jeda untuk memastikan overlay tidak merusak nomor
+
+  % Teorema tanpa judul, hanya label
+  \begin{Teorema}[][thm:lain]
+    Ini adalah teorema kedua. Referensinya harus menunjuk ke nomor 2.
+  \end{Teorema}
+
+  \vfill
+
+  % Merujuk teorema-teorema tersebut
+  Nomor referensi untuk \cref{thm:pythagoras} sekarang dijamin benar.
+  Begitu pula dengan referensi untuk \cref{thm:lain}.
+
+  \begin{alertblock}{Penting!}
+    Jika nomor masih tampak salah, \textbf{kompilasi ulang dokumen Anda sekali lagi}. LaTeX terkadang membutuhkan dua kali kompilasi untuk memperbarui semua referensi dengan benar.
+  \end{alertblock}
+
+\end{frame}
+
+\end{document}
